@@ -1,6 +1,5 @@
 FROM node:18
 COPY server.js .
-COPY ibm-credentials.env .
 COPY build ./build
 COPY scripts ./scripts
 COPY package.json .
