@@ -22,6 +22,7 @@ require("dotenv-defaults").config({
 const DISCOVERY_AUTH_TYPE = process.env.DISCOVERY_AUTH_TYPE;
 const DISCOVERY_URL = process.env.DISCOVERY_URL;
 const DISCOVERY_APIKEY = process.env.DISCOVERY_APIKEY;
+const DISCOVERY_PROJECTID = process.env.DISCOVERY_PROJECTID;
 const APPID_CLIENT_ID = process.env.APPID_CLIENT_ID;
 const APPID_TENANT_ID = process.env.APPID_TENANT_ID;
 const APPID_SECRET = process.env.APPID_SECRET;
@@ -74,4 +75,18 @@ app.listen(port, () => {
     "Discovery components example application running at ",
     APPID_REDIRECT_HOSTNAME
   );
+});
+
+// --------------------------------------------------------------------------
+// REST API : retrieve info about the host
+// --------------------------------------------------------------------------
+app.get("/getEnvironment", function (req, res) {
+  var hostobj = {
+    project_id: DISCOVERY_PROJECTID,
+  };
+  console.log(
+    "INFO: Service getEnvironment returning : " + JSON.stringify(hostobj)
+  );
+
+  res.json(hostobj);
 });

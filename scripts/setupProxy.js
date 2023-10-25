@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const setSdkUrl = require("./setSdkUrl");
 
 const addAuthorization = async (req, _res, next) => {
-  // look for authentication config from environment variables or `ibm-credentials.env` file
+  // look for authentication config from environment variables
   const authenticator = getAuthenticatorFromEnvironment("discovery");
   try {
     const accessToken = await authenticator.tokenManager.getToken();
